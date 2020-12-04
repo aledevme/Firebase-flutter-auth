@@ -1,5 +1,3 @@
-import 'dart:math';
-
 import 'package:flutter/material.dart';
 class LoginPage extends StatefulWidget {
   @override
@@ -39,14 +37,23 @@ class _LoginPageState extends State<LoginPage> {
             Container(
               width: double.infinity,
               child: Wrap(
-                spacing: 50,
+                spacing: 20,
                 children: socialMedias.asMap().map((int index, dynamic e){ 
                 return MapEntry(index, 
                     //Text('${socialMedias[index]}')
-                    Image(
-                    height: 60,
-                    width: 60,
-                    image: AssetImage(socialMedias[index]),
+                    Container(
+                      padding: EdgeInsets.all(10),
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(10),
+                        border: Border.all(
+                          color: Colors.grey[400]
+                        )
+                      ),
+                      child: Image(
+                        height: 60,
+                        width: 60,
+                        image: AssetImage(socialMedias[index]),
+                      ),
                     )
                   );
                 }).values.toList(),
