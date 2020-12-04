@@ -12,7 +12,10 @@ String photoUrl;
 Future<String> signInGoogle() async {
   await Firebase.initializeApp();
 
-  final GoogleSignInAccount signInAccount = await googleSignIn.signIn();
+  final GoogleSignInAccount signInAccount = await googleSignIn.signIn().catchError((onError) => print(onError));;
+  
+  if (signInAccount == null) return null;
+  
   final GoogleSignInAuthentication googleAuthentication = await signInAccount.authentication;
 
   final AuthCredential credential = GoogleAuthProvider.credential(

@@ -1,3 +1,4 @@
+import 'package:auth/services/googleService.dart';
 import 'package:flutter/material.dart';
 class LoginPage extends StatefulWidget {
   @override
@@ -49,10 +50,23 @@ class _LoginPageState extends State<LoginPage> {
                           color: Colors.grey[400]
                         )
                       ),
-                      child: Image(
-                        height: 60,
-                        width: 60,
-                        image: AssetImage(socialMedias[index]),
+                      child: GestureDetector(
+                          onTap: (){
+                            try {
+                              signInGoogle().then((result) => {
+                                if( result != null ){
+                                  Navigator.pushNamed(context, 'home')
+                                }
+                              });
+                            } catch (e) {
+                              print('entro aqui');
+                            } 
+                          },
+                          child: Image(
+                          height: 60,
+                          width: 60,
+                          image: AssetImage(socialMedias[index]),
+                        ),
                       ),
                     )
                   );
