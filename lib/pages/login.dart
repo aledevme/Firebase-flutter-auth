@@ -39,38 +39,62 @@ class _LoginPageState extends State<LoginPage> {
               width: double.infinity,
               child: Wrap(
                 spacing: 20,
-                children: socialMedias.asMap().map((int index, dynamic e){ 
-                return MapEntry(index, 
-                    //Text('${socialMedias[index]}')
-                    Container(
-                      padding: EdgeInsets.all(10),
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(10),
-                        border: Border.all(
-                          color: Colors.grey[400]
-                        )
+                children: [
+                Container(
+                    padding: EdgeInsets.all(10),
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(10),
+                      border: Border.all(
+                        color: Colors.grey[400]
+                      )
+                    ),
+                    child: GestureDetector(
+                        onTap: (){
+                          try {
+                            signInGoogle().then((result) => {
+                              if( result != null ){
+                                Navigator.pushNamed(context, 'home')
+                              }
+                            });
+                          } catch (e) {
+                            print('entro aqui');
+                          } 
+                        },
+                        child: Image(
+                        height: 60,
+                        width: 60,
+                        image: AssetImage('assets/google.png'),
                       ),
-                      child: GestureDetector(
-                          onTap: (){
-                            try {
-                              signInGoogle().then((result) => {
-                                if( result != null ){
-                                  Navigator.pushNamed(context, 'home')
-                                }
-                              });
-                            } catch (e) {
-                              print('entro aqui');
-                            } 
-                          },
-                          child: Image(
-                          height: 60,
-                          width: 60,
-                          image: AssetImage(socialMedias[index]),
-                        ),
+                    ),
+                  ),
+                  Container(
+                    padding: EdgeInsets.all(10),
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(10),
+                      border: Border.all(
+                        color: Colors.grey[400]
+                      )
+                    ),
+                    child: GestureDetector(
+                        onTap: (){
+                          try {
+                            signInGoogle().then((result) => {
+                              if( result != null ){
+                                Navigator.pushNamed(context, 'home')
+                              }
+                            });
+                          } catch (e) {
+                            print('entro aqui');
+                          } 
+                        },
+                        child: Image(
+                        height: 60,
+                        width: 60,
+                        image: AssetImage('assets/facebook.png'),
                       ),
-                    )
-                  );
-                }).values.toList(),
+                    ),
+                  )
+                ]
               ),
             )
           ],
