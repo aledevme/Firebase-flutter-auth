@@ -11,6 +11,7 @@ class _LoginPageState extends State<LoginPage> {
     'assets/google.png',
     'assets/facebook.png',
   ];
+  bool isLoadingFacebookResponse = false;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -28,7 +29,7 @@ class _LoginPageState extends State<LoginPage> {
                 fontSize: 40
               ),
             ),
-            Text('Escoje una opción para loguearte',
+            Text('Escoge una opción para loguearte',
               style: TextStyle(
                 fontSize: 40,
                 fontWeight: FontWeight.w100
@@ -79,10 +80,10 @@ class _LoginPageState extends State<LoginPage> {
                         onTap: (){
                           try {
                             facebookLogin().then((result){
-                              print(result);
                               if(result != null){
                                 Navigator.pushNamed(context, 'home');
                               }
+
                             });
                           } catch (e) {
                             print('entro aqui');
@@ -103,6 +104,17 @@ class _LoginPageState extends State<LoginPage> {
         ),
       ),
     );
+  }
+
+  _showMaterialDialog(BuildContext context) {
+    showDialog(
+    context: context,
+    builder: (_) => new AlertDialog(
+      title: Text('Loading Facebook Response'),
+      content: Image(
+        image: AssetImage('assets/loader.gif'),
+      )
+    ));
   }
 
   

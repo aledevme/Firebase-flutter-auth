@@ -83,6 +83,7 @@ Future<FacebookLoginResult> facebookLogin() async{
     case FacebookLoginStatus.error:
       //_showErrorOnUI(result.errorMessage);
       print(result.errorMessage);
+      print('error');
       break;
   }
 

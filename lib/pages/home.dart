@@ -12,11 +12,21 @@ class HomeScreen extends StatelessWidget {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Image(
-                image: NetworkImage(photoUrl != null ? photoUrl : 'https://slcp.lk/wp-content/uploads/2020/02/no-profile-photo.png' ),
+              FadeInImage(
+              width: 300,
+              height: 300,
+              fit: BoxFit.cover,  
+              placeholder: AssetImage('assets/loader.gif'), image: NetworkImage(photoUrl)),
+              Text(nameUser,
+                style: TextStyle(
+                  fontSize: 20
+                ),
               ),
-              Text(nameUser),
-              Text(emailUser)
+              Text(emailUser,
+                style: TextStyle(
+                  fontSize: 20
+                ),
+              )
             ],
           ),
         ),
