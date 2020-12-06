@@ -31,6 +31,8 @@ dependencies:
   firebase_core:
   firebase_auth:
   google_sign_in: ^4.4.4
+  flutter_facebook_login: ^3.0.0
+  http:
 
 dev_dependencies:
   flutter_test:

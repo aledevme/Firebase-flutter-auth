@@ -78,9 +78,10 @@ class _LoginPageState extends State<LoginPage> {
                     child: GestureDetector(
                         onTap: (){
                           try {
-                            signInGoogle().then((result) => {
-                              if( result != null ){
-                                Navigator.pushNamed(context, 'home')
+                            facebookLogin().then((result){
+                              print(result);
+                              if(result != null){
+                                Navigator.pushNamed(context, 'home');
                               }
                             });
                           } catch (e) {
@@ -90,6 +91,7 @@ class _LoginPageState extends State<LoginPage> {
                         child: Image(
                         height: 60,
                         width: 60,
+                        fit: BoxFit.cover,
                         image: AssetImage('assets/facebook.png'),
                       ),
                     ),

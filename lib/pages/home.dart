@@ -13,7 +13,7 @@ class HomeScreen extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Image(
-                image: NetworkImage(photoUrl),
+                image: NetworkImage(photoUrl != null ? photoUrl : 'https://slcp.lk/wp-content/uploads/2020/02/no-profile-photo.png' ),
               ),
               Text(nameUser),
               Text(emailUser)
